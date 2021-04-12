@@ -10,7 +10,7 @@ variable "AWS_REGION" {
 # }
 
 # When you want to create two instance
-variable "environement" {
+variable "environment" {
     type = string
     default ="Production"
 }
