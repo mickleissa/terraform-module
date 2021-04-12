@@ -4,7 +4,7 @@ resource "aws_vpc" "levelup_vpc" {
     enable_dns_support      = true
     enable_dns_hostnames    = true
 
-    tags {
+    tags = {
         Environment = var.environment_tag
     }
 }
@@ -31,17 +31,16 @@ resource "aws_subnet" "subnet_public" {
 }
 
 #AWS Route Table 
-resource "aws_route_table" "leveluprtb_public" {
+resource "aws_route_table" "levelup_rtb_public" {
     vpc_id       = aws_vpc.levelup_vpc.id
     route {
         cidr_block ="0.0.0.0/0"
         gateway_id = aws_internet_gateway.levelup_igw.id
-
+    }
         tags = {
             Environment = var.environment_tag
         }
     }
-}
 #AWS Route Association 
 resource "aws_route_table_association" "levelup_rta_subnet_public" {
     subnet_id = aws_subnet.subnet_public.id
@@ -51,7 +50,7 @@ resource "aws_route_table_association" "levelup_rta_subnet_public" {
 resource "aws_security_group" "levelup_sg_22" {
     name = "levelup_sg_22"
     vpc_id = aws_vpc.levelup_vpc.id
-}
+
 #SSh access from the VPC
 ingress {
     from_port = 22
@@ -68,4 +67,5 @@ egress {
 
 tags = {
     Environment = var.environment_tag
+}
 }

@@ -1,5 +1,5 @@
 output "vpc_id" {
-    value =aws_vpc.level_up.id
+    value =aws_vpc.levelup_VPC.id
 }
 
 output "public_subnet_id" {

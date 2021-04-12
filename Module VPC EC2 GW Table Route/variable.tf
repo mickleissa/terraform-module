@@ -1,6 +1,15 @@
 variable "region" {
     default ="us-east-2"
 }
+variable "AWS_ACCESS_KEY" {
+    type        = string
+    default     = ""
+}
+
+variable "AWS_SECRET_KEY" {
+    type        = string
+    default     = ""
+}
 
 variable "public_key_path" {
 
