@@ -9,7 +9,7 @@ module "ec2_cluster" {
     ami = "ami-05d72852800cbf29e"
     instance_type ="t2.micro"
     subnet_id ="subnet-f13f77bd"
-    instance_count = var.environment == "Production" ? 2 : 1
+    instance_count = var.environment == "Production" ? 2 : 1 # if the variable = production create 2 instance
 
     tags = {
         Terraform = "true"
